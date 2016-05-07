@@ -1,0 +1,115 @@
+<body<!DOCTYPE html>
+<html lang="en-US" ng-app="myModule">
+<head>
+    <script src="angular.min.js"></script>
+    <script src="script.js"></script>
+    <scripts>
+        table {
+            border-collapse: collapse;
+        }
+
+        table, td, th {
+            border: 1px solid black;
+        }
+    </script>
+</head>
+<body>
+    <h1>Expression</h1>
+    40+30: {{40+30}} <br/>
+    Array: {{['mayur','chakalasiya','developer']}} <br/>
+    1st Element: {{['mayur','chakalasiya','developer'][0]}} <br/>
+    
+    
+    
+    <h1>Directive :- ng-model/ng-controller</h1><br/>   
+    <div ng-controller="myController">
+        <div>
+            Controller Message: {{message}}
+        </div>
+        <div>
+            <h1>Employee Detail (Two-Way Biding)</h1>
+            <table>
+                <tr>
+                    <td>Employee FirstName:</td>
+                    <td><input type="text" ng-model="employee.firstName"/></td>
+                </tr>
+                <tr>
+                    <td>Employee LastName:</td>
+                    <td><input type="text" ng-model="employee.lastName"/></td>
+                </tr>
+                <tr>
+                    <td>Employee gender:</td>
+                    <td><input type="text" ng-model="employee.gender"/></td>
+                </tr>
+                <tr>
+                    <td>Employee FirstName:</td>
+                    <td>{{employee.firstName}}</td>
+                </tr>
+                <tr>
+                    <td>Employee LastName:</td>
+                    <td>{{employee.lastName}}</td>
+                </tr>
+                <tr>
+                    <td>Employee Gender:</td>
+                    <td>{{employee.gender}}</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div>
+            <h1>Directive :- ng-repeate</h1>
+            <table>
+                <tr>
+                    <td>Employee FirstName</td>
+                    <td>Employee LastName</td>
+                    <td>Employee Gender</td>
+                    <td>Employee Salary</td>
+                </tr>
+                <tr ng-repeat="emp in employees">
+                    <td>{{emp.firstName}}</td>
+                    <td>{{emp.lastName}}</td>
+                    <td>{{emp.gender}}</td>
+                    <td>{{emp.salary}}</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div>
+            <h1>Directive :- Nested ng-repeate</h1>
+            <ul>
+                <li ng-repeat="country in countries">
+                    {{country.name}} - Index - {{$index}}
+                    <ul ng-repeat="city in country.cites">
+                        {{city.name}} - Parent Index {{$parent.$index}}, Index - {{$index}}
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    <div ng-controller="eventController">
+        <h1>Handling Event in Angular</h1>
+        <table style="boarder:1px">
+            <thead>
+                <tr>
+                    <th>Technology Name:</th>
+                    <th>Likes</th>
+                    <th>Dislike</th>
+                    <th>Like/Dislikes</th>
+                </tr>
+                <tr ng-repeat="technology in technologies">
+                    <td>{{technology.name}}</td>
+                    <td>{{technology.like}}</td>
+                    <td>{{technology.dislike}}</td>
+                    <td>
+                        <input type="button" value="Like" ng-click="incrementLike(technology)"/>
+                        <input type="button" value="DisLike" ng-click="incrementDisLike(technology)" />
+                    </td>
+                </tr>
+            </thead>    
+
+        </table>
+    </div>
+    
+</body>
+</html>
